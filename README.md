@@ -26,7 +26,7 @@ Run the generated `cpp-snake` executable from the build directory.
 ## Related projects
 - [Tic-Tac-Toe AI](https://github.com/hanisnaff/cpp-tictactoe-ai)
 - [Tiny Dungeon](https://github.com/hanisnaff/cpp-dungeon)
-- [Portfolio](https://github.com/hanisnaff/README)
+- [Portfolio](https://github.com/hanisnaff/hanisnaff)
 
 ## License
 MIT
