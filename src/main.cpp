@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include <deque>
+#include <vector>
 
 constexpr int CELL = 24;
 constexpr int COLS = 30;
@@ -10,6 +11,27 @@ constexpr int HEIGHT = ROWS * CELL;
 struct Cell { int x; int y; };
 
 bool same(Cell a, Cell b) { return a.x == b.x && a.y == b.y; }
+
+bool spawnFood(const std::deque<Cell>& snake, Cell& food) {
+    std::vector<Cell> available;
+    for (int y = 0; y < ROWS; ++y) {
+        for (int x = 0; x < COLS; ++x) {
+            const Cell candidate{x, y};
+            bool occupied = false;
+            for (const Cell part : snake) {
+                if (same(candidate, part)) {
+                    occupied = true;
+                    break;
+                }
+            }
+            if (!occupied) available.push_back(candidate);
+        }
+    }
+
+    if (available.empty()) return false;
+    food = available[GetRandomValue(0, static_cast<int>(available.size()) - 1)];
+    return true;
+}
 
 int main() {
     InitWindow(WIDTH, HEIGHT, "C++ Snake");
@@ -52,8 +74,7 @@ int main() {
                     snake.push_front(head);
                     if (eats) {
                         ++score;
-                        food = {GetRandomValue(0, COLS - 1), GetRandomValue(0, ROWS - 1)};
-                        for (const Cell part : snake) if (same(food, part)) food = {0, 0};
+                        if (!spawnFood(snake, food)) gameOver = true;
                     } else snake.pop_back();
                 }
             }
