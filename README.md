@@ -1,13 +1,15 @@
-# Snake (C++ / raylib)
+# Snake — C++ / raylib
 
-A compact graphical Snake starter built with C++17 and raylib.
+A small graphical Snake game built with **C++17** and [raylib](https://www.raylib.com/).
 
-## Requirements
-- C++17 compiler
-- CMake 3.16+
-- raylib installed and discoverable by CMake
+## Features
+- Grid-based movement
+- Keyboard controls (arrow keys or WASD)
+- Food, score, and collision detection
+- Game-over screen and restart
 
 ## Build
+Requires a C++17 compiler, CMake 3.16+, Git, and a working CMake toolchain. CMake downloads raylib automatically on the first configure.
 
 ```bash
 cmake -S . -B build
@@ -21,5 +23,10 @@ Run the generated `cpp-snake` executable from the build directory.
 - R: restart after game over
 - Escape: quit
 
-## Concepts
-Game loop, delta time, grid movement, input, collision detection, and basic state management.
+## Related projects
+- [Tic-Tac-Toe AI](https://github.com/hanisnaff/cpp-tictactoe-ai)
+- [Tiny Dungeon](https://github.com/hanisnaff/cpp-dungeon)
+- [Portfolio](https://github.com/hanisnaff/README)
+
+## License
+MIT
